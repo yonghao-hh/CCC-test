@@ -13,7 +13,7 @@
 # Clone source code repository
 - name: Clone the code repository into home directory
   git:
-    repo: "https://github.com/Bachfischer/cluster-and-cloud-computing-assignment-2.git"
+    repo: "https://github.com/yonghao-hh/CCC-test.git"
     dest: ~/cluster-and-cloud-computing-assignment-2
   environment: "{{ proxy_env }}"
   become: true
