@@ -5,7 +5,8 @@ COPY . /
 
 # Install dependencies
 # Install gdal for Fiona installation
-RUN apt-get install build-essential \
+RUN apt-get update \
+    && aptitude install build-essential \
     && apt install libpq-dev \
     && apt install gdal-bin \
     && apt install libgdal-dev \
