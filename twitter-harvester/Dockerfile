@@ -14,6 +14,7 @@ COPY . /
 
 RUN apt update \
     && apt install software-properties-common \
+    && apt update \
     && add-apt-repository -y ppa:ubuntugis/ppa \
     && apt update \
     && apt upgrade \
