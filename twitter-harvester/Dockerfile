@@ -15,8 +15,8 @@ COPY . /
 RUN apt update \
     && apt install -y software-properties-common \
     && apt update \
-    && add-apt-repository -y ppa:ubuntugis/ppa \
-    && apt update \
+    && add-apt-repository -r ppa:ubuntugis/ppa \
+    && apt update -q\
     && apt install -y gdal-bin python-gdal python3-gdal libgdal-dev 
 
 # FROM osgeo/gdal:ubuntu-full-3.0.4
