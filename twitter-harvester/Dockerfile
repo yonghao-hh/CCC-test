@@ -13,12 +13,11 @@ COPY . /
 #     && install pygdal==3.0.4.10 
 
 RUN apt update \
-    && apt install software-properties-common \
+    && apt install -y software-properties-common \
     && apt update \
     && add-apt-repository -y ppa:ubuntugis/ppa \
     && apt update \
-    # && apt upgrade \
-    && apt install gdal-bin python-gdal python3-gdal libgdal-dev 
+    && apt install -y gdal-bin python-gdal python3-gdal libgdal-dev 
 
 # FROM osgeo/gdal:ubuntu-full-3.0.4
 # Install other packages
