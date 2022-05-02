@@ -10,4 +10,4 @@
 #  * Yonghao Hu (Student ID: 1049814)
 #
 
-. ./openrc.sh; ansible-playbook main_deploy.yaml
+. ./openrc.sh; ansible-playbook -i host.ini main_deploy.yaml
