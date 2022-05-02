@@ -17,11 +17,11 @@ RUN apt update \
     && apt update \
     && add-apt-repository -r ppa:ubuntugis/ppa \
     && apt update -q\
-    && apt install -y gdal-bin python3-gdal libgdal-dev build-essential python-dev
+    && apt install -y gdal-bin python3-gdal libgdal-dev build-essential python-dev python-numpy
 
 # FROM osgeo/gdal:ubuntu-full-3.0.4
 # Install other packages
 # RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.txt
-RUN pip install -r requirements.txt
+RUN apt install -r requirements.txt
 # Run twitter harvester
 CMD [ "python", "./main.py"]
