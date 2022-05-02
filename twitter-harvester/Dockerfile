@@ -5,12 +5,17 @@ COPY . /
 
 # Install dependencies
 # Install gdal for Fiona installation
-RUN apt-get update \
-    && aptitude install build-essential \
-    && apt install libpq-dev \
-    && apt install gdal-bin \
-    && apt install libgdal-dev \
-    && install pygdal==3.0.4.10 
+# RUN apt-get update \
+#     && aptitude install build-essential \
+#     && apt install libpq-dev \
+#     && apt install gdal-bin \
+#     && apt install libgdal-dev \
+#     && install pygdal==3.0.4.10 
+
+RUN add-apt-repository -y ppa:ubuntugis/ppa \
+    && apt update \
+    && apt upgrade \
+    && apt install gdal-bin python-gdal python3-gdal libgdal-dev 
 
 # FROM osgeo/gdal:ubuntu-full-3.0.4
 # Install other packages
