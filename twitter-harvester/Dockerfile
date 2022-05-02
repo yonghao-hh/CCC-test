@@ -12,7 +12,9 @@ COPY . /
 #     && apt install libgdal-dev \
 #     && install pygdal==3.0.4.10 
 
-RUN add-apt-repository -y ppa:ubuntugis/ppa \
+RUN apt update \
+    && apt install software-properties-common \
+    && add-apt-repository -y ppa:ubuntugis/ppa \
     && apt update \
     && apt upgrade \
     && apt install gdal-bin python-gdal python3-gdal libgdal-dev 
