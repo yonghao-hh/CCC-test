@@ -12,10 +12,11 @@ COPY . /
 #     && apt update \
 #     && apt install -y gcc gdal-bin python3-gdal libgdal-dev build-essential python3-dev fiona\
 #     && pip install -r requirements.txt
+
+RUN pip install -y --upgrade pip setuptools wheel \
+    && pip install -y p5py PEP517 \
+    && apt install -y pkg-config \
+    && pip install pkgconfig 
 RUN pip install -r requirements.txt
-# FROM osgeo/gdal:ubuntu-full-3.0.4
-# Install other packages
-# RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.txt
-# RUN pip install -r requirements.txt
-# Run twitter harvester
+
 CMD [ "python", "./main.py"]
