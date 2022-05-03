@@ -15,9 +15,9 @@
 # Location: Melbourne
 #
 
-DATABASE_URL='http://172.26.133.36:5984/'
+DATABASE_URL='http://172.26.134.115:5984/'
 DATABASE_USERNAME='admin'
-DATABASE_PASSWORD='data-miner!'
+DATABASE_PASSWORD='admin'
 CREDENTIALS_DATABASE='twitter_credentials'
 CITIES_DATABASE='cities'
 SEARCH_TERM_DATABASE='search_terms'
