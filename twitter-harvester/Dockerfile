@@ -13,8 +13,9 @@ COPY . /
 #     && apt install -y gcc gdal-bin python3-gdal libgdal-dev build-essential python3-dev fiona\
 #     && pip install -r requirements.txt
 
-RUN apt -y install libc-dev
-RUN apt -y install build-essential
+RUN apt update
+RUN apt install -y libc-dev
+RUN apt install -y build-essential
 RUN pip install -U pip
 RUN pip install -r requirements.txt
 
