@@ -15,7 +15,7 @@ COPY . /
 
 RUN apt install -y libc-dev
 RUN apt update
-RUN apt install -y gdal-bin python3-gdal libgdal-dev build-essential python3-dev
+RUN apt install -y gdal-bin python3-gdal libgdal-dev build-essential python3-dev python3-pandas python3-numpy
 RUN pip install -r requirements.txt
 
 CMD [ "python", "./main.py"]
