@@ -17,7 +17,9 @@ RUN apt update \
     && apt update \
     && add-apt-repository -r ppa:ubuntugis/ppa \
     && apt update -q\
-    && apt install -y gcc gdal-bin python3-gdal libgdal-dev build-essential python3-dev fiona python3-numpy\
+    && pip3 uninstall numpy \
+    && apt update \
+    && apt install -y gcc gdal-bin python3-gdal libgdal-dev build-essential python3-dev fiona\
     && pip install -r requirements.txt
 
 # FROM osgeo/gdal:ubuntu-full-3.0.4
