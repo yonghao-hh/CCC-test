@@ -17,6 +17,7 @@ RUN apt install -y libc-dev
 RUN apt update
 RUN apt install -y build-essential
 RUN pip install -U pip
+RUN pip install numpy
 RUN pip install -r requirements.txt
 
 CMD [ "python", "./main.py"]
