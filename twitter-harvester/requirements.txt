@@ -5,7 +5,7 @@ click==7.1.2
 click-plugins==1.1.1
 cligj==0.5.0
 cloudant==2.13.0
-Fiona==1.8.13.post1
+# Fiona==1.8.13.post1
 geographiclib==1.50
 geopandas==0.7.0
 geopy==1.22.0
