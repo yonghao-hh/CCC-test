@@ -13,10 +13,9 @@ COPY . /
 #     && apt install -y gcc gdal-bin python3-gdal libgdal-dev build-essential python3-dev fiona\
 #     && pip install -r requirements.txt
 
-RUN pip install -y --upgrade pip setuptools wheel \
-    && pip install -y p5py PEP517 \
-    && apt install -y pkg-config \
-    && pip install pkgconfig 
+RUN apt-get -y install libc-dev
+RUN apt-get -y install build-essential
+RUN pip install -U pip
 RUN pip install -r requirements.txt
 
 CMD [ "python", "./main.py"]
