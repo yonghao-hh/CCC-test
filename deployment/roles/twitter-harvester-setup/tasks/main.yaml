@@ -10,13 +10,6 @@
 #  * Yonghao Hu (Student ID: 1049814)
 #
 ---
-# Clone source code repository
-- name: Clone the code repository into home directory
-  git:
-    repo: "https://github.com/yonghao-hh/CCC-test.git"
-    dest: ~/cluster-and-cloud-computing-assignment-2
-  environment: "{{ proxy_env }}"
-  become: true
 
 # Create Docker config directory
 - name: Make sure that Docker config directory exists
@@ -36,9 +29,9 @@
 - name: Build an image and push it to local repo
   docker_image:
     build:
-      path: '~/cluster-and-cloud-computing-assignment-2/twitter-harvester/'
+      path: '~/CCC_PROJECT/tweeter-harvester/'
       pull: yes
-    name: cloud-assignment-2/tweet-harvester
+    name: test/tweeter-harvester
     tag: latest
     source: build
     # force: yes
@@ -49,27 +42,27 @@
 - name: Stop Twitter Harvester Docker container
   become: yes
   docker_container:
-    name: twitter-harvester
+    name: tweeter-harvester
     state: absent
 
-# Install cloudant python package to reset Twitter Harvester configuration in CouchDB 
-- pip:
-    name: cloudant
-  become: true
-  environment: "{{ proxy_env }}"
+# # Install cloudant python package to reset Twitter Harvester configuration in CouchDB 
+# - pip:
+#     name: cloudant
+#   become: true
+#   environment: "{{ proxy_env }}"
 
-# Run script to reset Twitter Harvester configuration in CouchDB 
-- name: Reset twitter harvesters
-  command: 'python3 ~/cluster-and-cloud-computing-assignment-2/twitter-harvester/reset_twitter_harvesters.py'
-  become: true
-  run_once: true
+# # Run script to reset Twitter Harvester configuration in CouchDB 
+# - name: Reset twitter harvesters
+#   command: 'python3 /home/ubuntu/CCC_PROJECT/twitter-harvester/reset_twitter_harvesters.py'
+#   become: true
+#   run_once: true
 
 # Create new docker container for Twitter Harvester and start container
 - name: Create and start Twitter Harvester Docker container
   become: yes
   docker_container:
-    name: twitter-harvester
-    image: cloud-assignment-2/tweet-harvester
+    name: tweeter-harvester
+    image: test/tweeter-harvester
     state: started
     pull: false
     recreate: true
