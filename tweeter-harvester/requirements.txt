@@ -24,4 +24,3 @@ tweepy==3.8.0
 typish==1.6.0
 urllib3==1.25.9
 CouchDB==1.2
-geopy==1.22.0
