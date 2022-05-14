@@ -12,11 +12,11 @@
 - name: Clone the project repository
   become: yes
   ansible.builtin.git:
-    repo: git@github.com:COMP90024-G2/COMP90024-project2.git
+    repo: git@github.com:yonghao-hh/CCC-test.git
     key_file: /home/ubuntu/.ssh/github_key
     dest: '{{ remote_th_directory }}'
     single_branch: yes
-    version: tweeter_harvester
+    version: master
   environment:
     GIT_TERMINAL_PROMPT: 0  
 

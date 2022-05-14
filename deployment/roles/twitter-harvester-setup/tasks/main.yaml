@@ -29,7 +29,7 @@
 - name: Build an image and push it to local repo
   docker_image:
     build:
-      path: '~/CCC_PROJECT/tweeter-harvester/'
+      path: '/home/ubuntu/CCC_PROJECT/tweeter-harvester/'
       pull: yes
     name: test/tweeter-harvester
     tag: latest
