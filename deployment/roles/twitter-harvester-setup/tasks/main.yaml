@@ -66,3 +66,15 @@
     state: started
     pull: false
     recreate: true
+
+# # Install python packages for streamer 
+# - pip:
+#     name: ['tweepy', 'jsons', 'couchdb']
+#   become: true
+#   environment: "{{ proxy_env }}"
+
+# # Run script to reset Twitter Harvester configuration in CouchDB 
+# - name: run streamer
+#   command: 'python3 /home/ubuntu/CCC_PROJECT/tweeter-harvester/streamer.py'
+#   become: true
+#   run_once: true
