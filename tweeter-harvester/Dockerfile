@@ -12,7 +12,7 @@
 
 FROM python:3
 
-COPY . /
+ADD  . /
 
 RUN apt install -y libc-dev
 RUN apt update
