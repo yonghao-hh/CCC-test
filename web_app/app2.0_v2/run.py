@@ -6,7 +6,7 @@
 from flask import Flask, redirect, url_for, request, render_template, make_response, jsonify, abort
 # from couchdb import Server
 import couchdb
-from flask_couchdb import Document
+# from flask_couchdb import Document
 import json
 
 app = Flask(__name__, static_url_path='/static')
