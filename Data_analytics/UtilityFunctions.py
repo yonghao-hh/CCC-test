@@ -10,7 +10,7 @@ from shapely.geometry import Point
 from shapely.geometry.polygon import Polygon
 
 import nltk
-#nltk.download('omw-1.4')
+nltk.download('omw-1.4')
 from nltk.corpus import wordnet
 
 def initialize_melb_area(geofile):
