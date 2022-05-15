@@ -4,4 +4,3 @@ flask
 couchdb
 pycouchdb
 TwitterAPI
-flaskext
