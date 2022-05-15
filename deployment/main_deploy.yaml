@@ -65,8 +65,8 @@
 
   roles:
      - role: project-clone
-    #  - role: twitter-harvester-setup
-     - role: data-analytics-setup
+     - role: twitter-harvester-setup
+    #  - role: data-analytics-setup
 
 
 # # Install data analytics scripts and React frontend
