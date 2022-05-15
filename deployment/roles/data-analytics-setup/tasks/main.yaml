@@ -12,10 +12,10 @@
 ---
 
 # Download Aurin data tar.gz
-# - name: download and unpack Aurin Data
-#   shell: sudo curl -L -o aurin "https://www.dropbox.com/s/y4ss9gmw6ykde51/twitter-melb.json.tar.gz?dl=1"; sudo tar zxvf aurin; sudo rm -rf aurin
-#   args:
-#     chdir: '{{ remote_analytics_directory }}'
+- name: download and unpack Aurin Data
+  shell: sudo curl -L -o aurin "https://www.dropbox.com/s/y4ss9gmw6ykde51/twitter-melb.json.tar.gz?dl=1"; sudo tar zxvf aurin; sudo rm -rf aurin
+  args:
+    chdir: '{{ remote_analytics_directory }}'
 
 # Install packages for data analytics
 # - name: Install packages
