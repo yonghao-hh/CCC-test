@@ -73,9 +73,9 @@
     - ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
 
   roles:
-     - role: project-clone
+    #  - role: project-clone
     #  - role: twitter-harvester-setup
-    #  - role: data-analytics-setup
+     - role: data-analytics-setup
 
 
 # # Install data analytics scripts and React frontend
