@@ -1,6 +1,0 @@
-
-function (doc) {
-    if(doc.type && doc._id){
-        emit(doc.name,doc)
-    }
-}

@@ -39,23 +39,11 @@
   environment: "{{ proxy_env }}"
 
 # Stop existing Docker containers for Twitter Harvesters and remove them (if any)
-- name: Stop Twitter Harvester Docker container
+- name: Stop Tweeter Harvester Docker container
   become: yes
   docker_container:
     name: tweeter-harvester
     state: absent
-
-# # Install cloudant python package to reset Twitter Harvester configuration in CouchDB 
-# - pip:
-#     name: cloudant
-#   become: true
-#   environment: "{{ proxy_env }}"
-
-# # Run script to reset Twitter Harvester configuration in CouchDB 
-# - name: Reset twitter harvesters
-#   command: 'python3 /home/ubuntu/CCC_PROJECT/twitter-harvester/reset_twitter_harvesters.py'
-#   become: true
-#   run_once: true
 
 # Create new docker container for Twitter Harvester and start container
 - name: Create and start Twitter Harvester Docker container
@@ -66,15 +54,3 @@
     state: started
     pull: false
     recreate: true
-
-# # Install python packages for streamer 
-# - pip:
-#     name: ['tweepy', 'jsons', 'couchdb']
-#   become: true
-#   environment: "{{ proxy_env }}"
-
-# # Run script to reset Twitter Harvester configuration in CouchDB 
-# - name: run streamer
-#   command: 'python3 /home/ubuntu/CCC_PROJECT/tweeter-harvester/streamer.py'
-#   become: true
-#   run_once: true

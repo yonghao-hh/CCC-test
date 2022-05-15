@@ -1,0 +1,72 @@
+#
+# Cluster and Cloud Computing - Team 2 
+# 
+# Authors: 
+#
+#  * Yi Yang (Student ID: 1074365)
+#  * Claire Zhang (Student ID: 1080915)
+#  * Hengzhi Qiu (Student ID: 1253748)
+#  * Terry (Student ID: 955797)
+#  * Yonghao Hu (Student ID: 1049814)
+#
+---
+
+# # Create Docker config directory
+# - name: Make sure that Docker config directory exists
+#   become: yes
+#   file:
+#     path: '~/.docker'
+#     state: 'directory'
+
+# # Set Docker proxy for University of Melbourne Research Cloud
+# - name: Ensure Docker client proxy settings are present on the server
+#   become: yes
+#   copy:
+#     content: "{{ docker_proxy_settings }}"
+#     dest: ~/.docker/config.json
+
+# # Build Docker image for Twitter data analytics
+# - name: Build an image and push it to local repo
+#   docker_image:
+#     build:
+#       path: '~/cluster-and-cloud-computing-assignment-2/analytics/aurin-twitter-analytics/'
+#       pull: yes
+#     name: cloud-assignment-2/aurin-twitter-analytics
+#     tag: latest
+#     source: build
+#     force: yes
+#   become: yes
+#   environment: "{{ proxy_env }}"
+
+# # Stop Docker container for data analytics scripts
+# - name: Stop Data Analytics Docker container
+#   become: yes
+#   docker_container:
+#     name: aurin-twitter-analytics
+#     state: absent
+
+# # Create new Docker container for data analytics scripts and start container
+# - name: Create and start Data Analytics Docker container
+#   become: yes
+#   docker_container:
+#     name: aurin-twitter-analytics
+#     image: cloud-assignment-2/aurin-twitter-analytics
+#     state: started
+#     pull: false
+#     recreate: true
+
+# Download Aurin data tar.gz
+- name: download and unpack Aurin Data
+  shell: sudo curl -L -o aurin "https://www.dropbox.com/s/y4ss9gmw6ykde51/twitter-melb.json.tar.gz?dl=1"; sudo tar zxvf aurin;
+         sudo rm -rf aurin
+  args:
+    chdir: '{{ remote_analytics_directory }}'
+
+# Install packages for data analytics
+- name: Install packages
+  tags: always
+  become: yes
+  pip:
+    name: ['tweepy', 'mmap', 'couchdb', 'textblob', 'shapely', 'nltk']
+    state: latest
+  environment: "{{ proxy_env }}"
