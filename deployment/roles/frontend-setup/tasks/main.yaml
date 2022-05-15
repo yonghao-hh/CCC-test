@@ -66,12 +66,6 @@
     state: absent
 
 # Create new docker container for web application and start container
-- name: Create and start web application Docker container
-  become: yes
-  sudo: yes
-  docker_container:
-    name: web_app
-    image: test/web_app
-    state: started
-    pull: false
-    recreate: true
+- name: Run a web app docker instance
+  shell: sudo docker run -d -p 80:80 --name web_app test/web_app
+  
