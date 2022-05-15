@@ -9,7 +9,7 @@ import couchdb
 
 username = "admin"
 password = "admin"
-host = "172.26.130.73"
+host = "172.26.132.4"
 port = "5984"
 
 def connect_to_couch_db_server(host, port, username, password):
