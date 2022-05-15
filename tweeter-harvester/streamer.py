@@ -76,7 +76,7 @@ for topic in topics:
     start_time= time.time()
     print(topic[0])
     stream = MyStreamListener(start_time,STREAM_TIME,consumer_key,consumer_secret,
-                                   access_token,access_token_secret,db_name = topic[0])
+                                   access_token,access_token_secret,db_name = topic[0]+'_stream')
     if len(topic) <= 1:
         stream.filter(track='',locations=MEL)
     else:
