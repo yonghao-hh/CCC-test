@@ -49,7 +49,7 @@
 - name: Build an image and push it to local repo
   docker_image:
     build:
-      path: '/home/ubuntu/CCC_PROJECT/web_app/'
+      path: '/home/ubuntu/CCC_PROJECT/web_app/app2.0_v2'
       pull: yes
     name: test/web_app
     tag: latest
