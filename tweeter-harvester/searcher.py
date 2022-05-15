@@ -127,7 +127,7 @@ for top in topics:
     topic  = top[0]
     keyword = get_keyword(topic)
     print('searching:',keyword)
-    db_name = topic
+    db_name = topic + "_search"
     if keyword == '':
         with open(RANGE_FILE, 'r',encoding='utf-8') as f:
             p = json.load(f)
