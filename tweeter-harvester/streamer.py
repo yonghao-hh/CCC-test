@@ -74,6 +74,7 @@ def save_tweet_in_db(db,tweet_dict):
 
 for topic in topics:
     start_time= time.time()
+    print(topic[0])
     stream = MyStreamListener(start_time,STREAM_TIME,consumer_key,consumer_secret,
                                    access_token,access_token_secret,db_name = topic[0])
     if len(topic) <= 1:
