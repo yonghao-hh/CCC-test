@@ -15,7 +15,7 @@ HEALTH = ["health", "hospital","sick","unwell","doctor", "medicine", "drug"]
 
 TOPICS = [['diversity'], EMPLOYMENT, HEALTH]
 
-READ_LIMIT = 10000
+READ_LIMIT = 20000
 
 END_OF_LINE_START = -2 #the Index of where a line should end if it is first line of the large twitter file
 
