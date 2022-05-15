@@ -31,8 +31,13 @@
 #     - ansible_user: ubuntu
 #     - ansible_ssh_private_key_file: ~/.ssh/team2.pem
 #     - ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+#   roles:
+#     - role: common-setup
+#     - role: docker-setup
+#     - role: volume-mount
+#     - role: couchdb-setup
 
-# # Install Docker and CouchDB for Data Nodes
+# Install Docker and CouchDB for Process Node
 # - hosts: ProcessNode
 #   vars_files:
 #     - host_vars/couchdb.yaml
@@ -46,6 +51,7 @@
 #     - role: common-setup
 #     - role: docker-setup
 #     - role: volume-mount
+#     - role: couchdb-setup
 
 #  # Perform CouchDB configuration on all hosts except Masternode
 # - hosts: DataNodes:!Masternode
@@ -74,8 +80,8 @@
 
 #   roles:
 #      - role: project-clone
-    #  - role: twitter-harvester-setup
-    #  - role: data-analytics-setup
+#      - role: twitter-harvester-setup
+#      - role: data-analytics-setup
 
 
 # Install data analytics scripts and React frontend

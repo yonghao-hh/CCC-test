@@ -4,4 +4,4 @@ ADD  . /
 
 RUN pip install -r requirements.txt
 
-CMD ['python3','run.py']
+CMD ["gunicorn", "run:app", "-c", "./gunicorn.conf.py"]
