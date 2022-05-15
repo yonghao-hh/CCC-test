@@ -71,6 +71,6 @@
 #   environment: "{{ proxy_env }}"
 
 - name: run data analytics
-  shell: python3 Main.py
+  shell: python3 download_corpus.py; python3 Main.py
   args:
     chdir: '{{ remote_analytics_directory }}'
