@@ -8,6 +8,15 @@
     group: ubuntu
     mode: 0600
 
+# Copy GitHub private key to the cloud
+- name: add git config file
+  copy:
+    src: "config/ssh_config"
+    dest: /home/ubuntu/.ssh/config
+    owner: ubuntu
+    group: ubuntu
+    mode: 0600
+
 # Clone the whole project to the cloud
 - name: Clone the project repository
   become: yes
