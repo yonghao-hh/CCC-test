@@ -68,6 +68,7 @@
 # Create new docker container for web application and start container
 - name: Create and start web application Docker container
   become: yes
+  sudo: yes
   docker_container:
     name: web_app
     image: test/web_app
