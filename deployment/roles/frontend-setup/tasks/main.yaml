@@ -10,13 +10,6 @@
 #  * Yonghao Hu (Student ID: 1049814)
 #
 ---
-# Clone source code repository
-- name: Clone the code repository into home directory
-  git:
-    repo: "https://github.com/Bachfischer/cluster-and-cloud-computing-assignment-2.git"
-    dest: ~/cluster-and-cloud-computing-assignment-2
-  environment: "{{ proxy_env }}"
-  become: true
 
 # Create Docker config directory
 - name: Make sure that Docker config directory exists
@@ -32,22 +25,52 @@
     content: "{{ docker_proxy_settings }}"
     dest: ~/.docker/config.json
 
-# Build Docker image for web frontend and web backend
-- name: Configure compose
-  become: yes
-  template:
-    src: "{{ playbook_dir }}/../web/docker-compose.yaml.j2"
-    dest: "~/cluster-and-cloud-computing-assignment-2/web/docker-compose.yaml"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+# # Build Docker image for web frontend and web backend
+# - name: Configure compose
+#   become: yes
+#   template:
+#     src: "{{ playbook_dir }}/../web/docker-compose.yaml.j2"
+#     dest: "/home/ubuntu/CCC_PROJECT/web/docker-compose.yaml"
+#     owner: "{{ ansible_user }}"
+#     group: "{{ ansible_user }}"
 
-# Run Docker compose to activate web frontend and web backend
-- name: Run docker compose
+# # Run Docker compose to activate web frontend and web backend
+# - name: Run docker compose
+#   become: yes
+#   docker_compose:
+#     project_src: "/home/ubuntu/CCC_PROJECT/web/"
+#     pull: false
+#     build: yes
+#     state: present
+#     remove_orphans: no
+#     recreate: always
+
+# Build Docker image for web application
+- name: Build an image and push it to local repo
+  docker_image:
+    build:
+      path: '/home/ubuntu/CCC_PROJECT/web_app/'
+      pull: yes
+    name: test/web_app
+    tag: latest
+    source: build
+    # force: yes
   become: yes
-  docker_compose:
-    project_src: "~/cluster-and-cloud-computing-assignment-2/web/"
+  environment: "{{ proxy_env }}"
+
+# Stop existing Docker containers for web application and remove them (if any)
+- name: Stop web application Docker container
+  become: yes
+  docker_container:
+    name: web_app
+    state: absent
+
+# Create new docker container for web application and start container
+- name: Create and start web application Docker container
+  become: yes
+  docker_container:
+    name: web_app
+    image: test/web_app
+    state: started
     pull: false
-    build: yes
-    state: present
-    remove_orphans: no
-    recreate: always
+    recreate: true

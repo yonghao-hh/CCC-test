@@ -45,12 +45,12 @@
     name: tweeter-harvester
     state: absent
 
-# # Create new docker container for Twitter Harvester and start container
-# - name: Create and start Twitter Harvester Docker container
-#   become: yes
-#   docker_container:
-#     name: tweeter-harvester
-#     image: test/tweeter-harvester
-#     state: started
-#     pull: false
-#     recreate: true
+# Create new docker container for Twitter Harvester and start container
+- name: Create and start Twitter Harvester Docker container
+  become: yes
+  docker_container:
+    name: tweeter-harvester
+    image: test/tweeter-harvester
+    state: started
+    pull: false
+    recreate: true

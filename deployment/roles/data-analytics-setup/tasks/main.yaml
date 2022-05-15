@@ -18,14 +18,15 @@
     chdir: '{{ remote_analytics_directory }}'
 
 # Install packages for data analytics
-# - name: Install packages
-#   tags: always
-#   become: yes
-#   pip:
-#     name: ['pip', 'tweepy', 'couchdb', 'textblob', 'shapely', 'nltk']
-#     state: latest
-#   environment: "{{ proxy_env }}"
+- name: Install packages
+  tags: always
+  become: yes
+  pip:
+    name: ['pip', 'tweepy', 'couchdb', 'textblob', 'shapely', 'nltk']
+    state: latest
+  environment: "{{ proxy_env }}"
 
+# Perform data analysis on tweets in couchdb
 - name: run data analytics
   shell: python3 download_corpus.py; python3 Main.py
   args:

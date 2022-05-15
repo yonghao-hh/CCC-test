@@ -21,7 +21,7 @@
 #     - role: openstack-security-group
 #     - role: openstack-instance
 
-# # Install Docker and CouchDB
+# # Install Docker and CouchDB for Data Nodes
 # - hosts: DataNodes
 #   vars_files:
 #     - host_vars/couchdb.yaml
@@ -32,11 +32,20 @@
 #     - ansible_ssh_private_key_file: ~/.ssh/team2.pem
 #     - ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
 
+# # Install Docker and CouchDB for Data Nodes
+# - hosts: ProcessNode
+#   vars_files:
+#     - host_vars/couchdb.yaml
+#   gather_facts: true
+#   vars:
+#     - ansible_python_interpreter: /usr/bin/python3
+#     - ansible_user: ubuntu
+#     - ansible_ssh_private_key_file: ~/.ssh/team2.pem
+#     - ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
 #   roles:
 #     - role: common-setup
 #     - role: docker-setup
 #     - role: volume-mount
-#     - role: couchdb-setup
 
 #  # Perform CouchDB configuration on all hosts except Masternode
 # - hosts: DataNodes:!Masternode
@@ -52,25 +61,8 @@
 #   roles:
 #     - role: couchdb-cluster-setup
 
-# Install Twitter Harvester on all hosts
-- hosts: DataNodes
-  vars_files:
-    - host_vars/application_env.yaml
-  gather_facts: true
-  vars:
-    - ansible_python_interpreter: /usr/bin/python3
-    - ansible_user: ubuntu
-    - ansible_ssh_private_key_file: ~/.ssh/team2.pem
-    - ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
-
-  roles:
-     - role: project-clone
-     - role: twitter-harvester-setup
-     - role: data-analytics-setup
-
-
-# # Install data analytics scripts and React frontend
-# - hosts: ProcessNode
+# # Install Twitter Harvester and Data analyzer
+# - hosts: DataNodes
 #   vars_files:
 #     - host_vars/application_env.yaml
 #   gather_facts: true
@@ -81,6 +73,21 @@
 #     - ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
 
 #   roles:
-#     - role: aurin-twitter-analytics-setup
-#     - role: gps-processing-setup
-#     - role: frontend-setup
+#      - role: project-clone
+    #  - role: twitter-harvester-setup
+    #  - role: data-analytics-setup
+
+
+# Install data analytics scripts and React frontend
+- hosts: ProcessNode
+  vars_files:
+    - host_vars/application_env.yaml
+  gather_facts: true
+  vars:
+    - ansible_python_interpreter: /usr/bin/python3
+    - ansible_user: ubuntu
+    - ansible_ssh_private_key_file: ~/.ssh/team2.pem
+    - ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+
+  roles:
+    - role: frontend-setup
