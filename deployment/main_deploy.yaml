@@ -61,25 +61,8 @@
 #   roles:
 #     - role: couchdb-cluster-setup
 
-# Install Twitter Harvester and Data analyzer
-- hosts: DataNodes
-  vars_files:
-    - host_vars/application_env.yaml
-  gather_facts: true
-  vars:
-    - ansible_python_interpreter: /usr/bin/python3
-    - ansible_user: ubuntu
-    - ansible_ssh_private_key_file: ~/.ssh/team2.pem
-    - ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
-
-  roles:
-    #  - role: project-clone
-    #  - role: twitter-harvester-setup
-     - role: data-analytics-setup
-
-
-# # Install data analytics scripts and React frontend
-# - hosts: ProcessNode
+# # Install Twitter Harvester and Data analyzer
+# - hosts: DataNodes
 #   vars_files:
 #     - host_vars/application_env.yaml
 #   gather_facts: true
@@ -90,5 +73,22 @@
 #     - ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
 
 #   roles:
-#     - role: project-clone
-#     - role: frontend-setup
+#      - role: project-clone
+#      - role: twitter-harvester-setup
+#      - role: data-analytics-setup
+
+
+# Install data analytics scripts and React frontend
+- hosts: ProcessNode
+  vars_files:
+    - host_vars/application_env.yaml
+  gather_facts: true
+  vars:
+    - ansible_python_interpreter: /usr/bin/python3
+    - ansible_user: ubuntu
+    - ansible_ssh_private_key_file: ~/.ssh/team2.pem
+    - ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+
+  roles:
+    - role: project-clone
+    # - role: frontend-setup

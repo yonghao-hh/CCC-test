@@ -10,7 +10,7 @@ login_info = "http://admin:admin@172.26.132.4:5984"
 
 ONLY_SAVE_TWEETS_WITH_GEO = False
 
-STREAM_TIME = 1800
+STREAM_TIME = 600
 
 EMPLOYMENT = ["employment","job", "occupation", "income", "pay"]
 
