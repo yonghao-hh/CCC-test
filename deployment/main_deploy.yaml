@@ -68,7 +68,7 @@
 #     - role: couchdb-cluster-setup
 
 # # Install Twitter Harvester and Data analyzer
-# - hosts: DataNodes
+# - hosts: Masternode
 #   vars_files:
 #     - host_vars/application_env.yaml
 #   gather_facts: true

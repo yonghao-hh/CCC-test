@@ -13,14 +13,14 @@
 
 # Create Docker config directory
 - name: Make sure that Docker config directory exists
-  become: yes
+  # become: yes
   file:
     path: '~/.docker'
     state: 'directory'
 
 # Set Docker proxy for University of Melbourne Research Cloud
 - name: Ensure Docker client proxy settings are present on the server
-  become: yes
+  # become: yes
   copy:
     content: "{{ docker_proxy_settings }}"
     dest: ~/.docker/config.json
@@ -55,12 +55,12 @@
     tag: latest
     source: build
     # force: yes
-  become: yes
+  # become: yes
   environment: "{{ proxy_env }}"
 
 # Stop existing Docker containers for web application and remove them (if any)
 - name: Stop web application Docker container
-  become: yes
+  # become: yes
   docker_container:
     name: web_app
     state: absent
