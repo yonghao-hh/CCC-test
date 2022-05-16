@@ -20,4 +20,4 @@ RUN apt install -y build-essential gdal-bin libgdal-dev python3-dev python3-pand
 RUN pip install pyproj 
 RUN pip install -r requirements.txt
 
-CMD ['./run-py.sh']
+CMD [ "./run-py.sh" ]
