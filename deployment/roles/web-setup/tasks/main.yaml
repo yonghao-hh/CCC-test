@@ -45,18 +45,18 @@
 #     remove_orphans: no
 #     recreate: always
 
-# Build Docker image for web application
-- name: Build an image and push it to local repo
-  docker_image:
-    build:
-      path: '/home/ubuntu/CCC_PROJECT/web_app/app2.0_v2'
-      pull: yes
-    name: test/web_app
-    tag: latest
-    source: build
-    # force: yes
-  # become: yes
-  environment: "{{ proxy_env }}"
+# # Build Docker image for web application
+# - name: Build an image and push it to local repo
+#   docker_image:
+#     build:
+#       path: '/home/ubuntu/CCC_PROJECT/web_app/app2.0_v2'
+#       pull: yes
+#     name: test/web_app
+#     tag: latest
+#     source: build
+#     # force: yes
+#   # become: yes
+#   environment: "{{ proxy_env }}"
 
 # Stop existing Docker containers for web application and remove them (if any)
 - name: Stop web application Docker container
@@ -65,7 +65,7 @@
     name: web_app
     state: absent
 
-# Create new docker container for web application and start container
-- name: Run a web app docker instance
-  shell: sudo docker run -d -p 80:80 --name web_app test/web_app
+# # Create new docker container for web application and start container
+# - name: Run a web app docker instance
+#   shell: sudo docker run -d -p 80:80 --name web_app test/web_app
   
