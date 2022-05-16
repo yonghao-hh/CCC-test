@@ -45,7 +45,7 @@
     name: web_app
     state: absent
 
-# Create new docker container for web application and start container
-- name: Run a web app docker instance
-  shell: sudo docker run -d -p 80:80 --name web_app demo/web_app
+# # Create new docker container for web application and start container
+# - name: Run a web app docker instance
+#   shell: sudo docker run -d -p 80:80 --name web_app demo/web_app
   
