@@ -97,4 +97,4 @@
 
   roles:
     - role: project-clone
-    - role: frontend-setup
+    - role: web-setup
