@@ -4,4 +4,4 @@ ADD  . /
 
 RUN pip install -r requirements.txt
 
-CMD ['run-app.sh']
+CMD source run-app.sh
