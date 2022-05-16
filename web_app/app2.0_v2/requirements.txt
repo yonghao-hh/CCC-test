@@ -1,6 +1,0 @@
-gunicorn
-gevent
-flask
-couchdb
-pycouchdb
-TwitterAPI
