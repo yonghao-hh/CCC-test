@@ -1,0 +1,1 @@
+python3 ./preprocess_json.py; gunicorn run:app -c ./gunicorn.conf.py"]
