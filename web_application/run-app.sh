@@ -1,1 +1,4 @@
-python3 ./preprocess_json.py; gunicorn run:app -c ./gunicorn.conf.py"]
+#!/bin/bash
+
+exec python3 ./preprocess_json.py &
+exec gunicorn run:app -c ./gunicorn.conf.py
